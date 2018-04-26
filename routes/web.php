@@ -32,4 +32,6 @@ Route::group(['middleware' => 'auth'], function () {
         return view('reports',$data);
     })->name('reports');
 
+    Route::resource('excel','ExcelController');
+
 });

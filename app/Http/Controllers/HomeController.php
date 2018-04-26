@@ -30,9 +30,13 @@ class HomeController extends Controller
 
     public function hoursmonth()
     {
-        $hours = DB::select("SELECT timestampdiff(HOUR, (SELECT SUBDATE(created_at, DAYOFMONTH(created_at) - 1) as hours FROM electricities LIMIT 1), now())");
+        $hours = DB::select("SELECT timestampdiff(HOUR, (SELECT SUBDATE(created_at, DAYOFMONTH(created_at) - 1) as hours FROM electricities LIMIT 1), now()) as value");
 
-        return $hours;
+        foreach ($hours as $hour) {
+            $result = $hour->value;
+        }
+
+        return $result;
     }
 
     public function wattstoeuros()
@@ -44,17 +48,17 @@ class HomeController extends Controller
 
 
         //$electricities = DB::select('select * from electricities');
-        foreach ($electricities as $key => $value) {
-            $result[] = $value->month;
-            $result[] = $value->sum;
-
-            $multiplicacio = $value->sum * 3;
-            $resultat = $multiplicacio / 1000;
+        //Calcul euros
+        foreach ($electricities as $value) {
+            $wh = $value->sum * $this->hoursmonth() / 1000;
+            $kwh = $wh / 1000;
+            $resultat = $kwh * 0.12159;
         }
 //
 //        print_r($result);
         //print_r($electricities);
-        return $this->hoursmonth();
+        //return $this->hoursmonth();
+        return $resultat;
         //return view('home');
     }
 
@@ -78,8 +82,7 @@ class HomeController extends Controller
 //
 //        print_r($result);
         //print_r($electricities);
-        //return view('home',compact(['electricities', 'euros']));
-        return $euros;
+        return view('home',compact(['electricities', 'euros']));
         //return view('home');
     }
 }
