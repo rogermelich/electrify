@@ -25,18 +25,85 @@ class ExcelController extends Controller
 
     }
 
-    public function maxdaterange($start, $end)
+    public function maxdaterange()
     {
-        Excel::create('Laravel Excel', function($excel) {
+        $hora = ' 00:00:00';
+        $data = request()->all();
 
-            $excel->sheet('ElectricityMaxDateRange', function($sheet) {
+        $start = $data['datainici'];
+        $end = $data['datafi'];
 
-                $start = $this->start;
-                $end = $this->end;
+        $watts = DB::select("SELECT max(clamp) as watts, created_at as data FROM electricities WHERE (created_at >= '$start.$hora' AND created_at < '$end.$hora' ) GROUP BY created_at");
 
-                $products = DB::select("SELECT max(clamp) as watts, created_at as data FROM electricities WHERE (created_at >= '$start' AND created_at < '$end' ) GROUP BY created_at");
+        $result = array();
+        foreach ($watts as $watt){
+            $watt->watts;
+            $watt->data;
+            $result[] = (array)$watt;
+        }
 
-                $sheet->fromArray($products);
+        //Afaga les dades de $result imprimeix el Excel
+        Excel::create('Consum Màxim Entre Dates', function($excel) use ($result) {
+
+            $excel->sheet('Consum Màxim Entre Dates', function($sheet) use ($result){
+
+                $sheet->fromArray($result);
+
+            });
+        })->export('xls');
+    }
+
+    public function mindaterange()
+    {
+        $hora = ' 00:00:00';
+        $data = request()->all();
+
+        $start = $data['datainici'];
+        $end = $data['datafi'];
+
+        $watts = DB::select("SELECT min(clamp) as watts, created_at as data FROM electricities WHERE (created_at >= '$start.$hora' AND created_at < '$end.$hora' ) GROUP BY created_at");
+
+        $result = array();
+        foreach ($watts as $watt){
+            $watt->watts;
+            $watt->data;
+            $result[] = (array)$watt;
+        }
+
+        //Afaga les dades de $result imprimeix el Excel
+        Excel::create('Consum Mínim Entre Dates', function($excel) use ($result) {
+
+            $excel->sheet('Consum Mínim Entre Dates', function($sheet) use ($result){
+
+                $sheet->fromArray($result);
+
+            });
+        })->export('xls');
+    }
+
+    public function avgdaterange()
+    {
+        $hora = ' 00:00:00';
+        $data = request()->all();
+
+        $start = $data['datainici'];
+        $end = $data['datafi'];
+
+        $watts = DB::select("SELECT avg(clamp) as watts, created_at as data FROM electricities WHERE (created_at >= '$start.$hora' AND created_at < '$end.$hora' ) GROUP BY created_at");
+
+        $result = array();
+        foreach ($watts as $watt){
+            $watt->watts;
+            $watt->data;
+            $result[] = (array)$watt;
+        }
+
+        //Afaga les dades de $result imprimeix el Excel
+        Excel::create('Consum Mínim Mitjà Dates', function($excel) use ($result) {
+
+            $excel->sheet('Consum Mínim Mitjà Dates', function($sheet) use ($result){
+
+                $sheet->fromArray($result);
 
             });
         })->export('xls');

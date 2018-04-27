@@ -50,9 +50,10 @@ class HomeController extends Controller
         //$electricities = DB::select('select * from electricities');
         //Calcul euros
         foreach ($electricities as $value) {
-            $wh = $value->sum * $this->hoursmonth() / 1000;
-            $kwh = $wh / 1000;
-            $resultat = $kwh * 0.12159;
+            //$wh = $value->sum * $this->hoursmonth() / 1000;
+            //$kwh = $wh / 1000;
+            $kw = $value->sum / 1000;
+            $resultat = $kw * 0.12159;
         }
 //
 //        print_r($result);

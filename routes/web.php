@@ -22,16 +22,19 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
     #adminlte_routes
-    Route::get('graphs', function ()    {
+    Route::get('graphs', function () {
         $data = [];
-        return view('graphs',$data);
+        return view('graphs', $data);
     })->name('graphs');
 
-    Route::get('reports', function ()    {
+    Route::get('reports', function () {
         $data = [];
-        return view('reports',$data);
+        return view('reports', $data);
     })->name('reports');
 
-    Route::resource('excel','ExcelController');
+    Route::post('export/maxdaterange', 'ExcelController@maxdaterange');
+    Route::post('export/mindaterange', 'ExcelController@mindaterange');
+    Route::post('export/avgdaterange', 'ExcelController@avgdaterange');
+
 
 });
