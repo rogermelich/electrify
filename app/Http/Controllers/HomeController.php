@@ -63,6 +63,20 @@ class HomeController extends Controller
         //return view('home');
     }
 
+    public function totalyearwatts()
+    {
+        $year = date("Y");
+
+        $totalwatts = DB::select("select sum(clamp) as sum from electricities where created_at LIKE '%$year%'");
+
+        foreach ($totalwatts as $totalwatt) {
+            $resultat = $totalwatt->sum / 1000;
+
+        }
+
+        return $resultat;
+    }
+
     /**
      * Show the application dashboard.
      *
@@ -73,6 +87,7 @@ class HomeController extends Controller
         $month = date("m");
 
         $euros = $this->wattstoeuros();
+        $yearkwatts = $this->totalyearwatts();
         //$electricities = Electricity::all();
         $electricities = DB::select("select MonthName(created_at) as month, sum(clamp) as sum from electricities where created_at >= makedate(year(curdate()), 1) and created_at < makedate(year(curdate()) + 1, 1) and MONTH(created_at) = '$month' group by MonthName(created_at)");
         //$electricities = DB::select('select * from electricities');
@@ -83,7 +98,7 @@ class HomeController extends Controller
 //
 //        print_r($result);
         //print_r($electricities);
-        return view('home',compact(['electricities', 'euros']));
+        return view('home',compact(['electricities', 'euros', 'yearkwatts']));
         //return view('home');
     }
 }
