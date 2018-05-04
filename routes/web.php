@@ -36,5 +36,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('export/mindaterange', 'ExcelController@mindaterange');
     Route::post('export/avgdaterange', 'ExcelController@avgdaterange');
 
-
+    Route::get('graph/all', 'GraphController@graphjson');
 });

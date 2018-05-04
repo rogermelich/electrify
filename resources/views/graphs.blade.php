@@ -1,9 +1,12 @@
 @extends('adminlte::page')
 
-@section('htmlheader_title')
-    Change Title here!
+@section('contentheader_title')
+    Graphs
 @endsection
 
+@section('htmlheader_title')
+    Graphs
+@endsection
 
 @section('main-content')
     <div class="container-fluid spark-screen">
@@ -24,6 +27,11 @@
                     <!-- /.box-header -->
                     <div class="box-body">
 
+                        {{--<canvas id="myChart" width="400" height="400"></canvas>--}}
+
+                        <div id="chart-container">
+                            <canvas id="Dashboard-Graph"></canvas>
+                        </div>
 
                     </div>
                 </div>

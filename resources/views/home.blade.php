@@ -1,7 +1,12 @@
 @extends('adminlte::page')
 
+
+@section('contentheader_title')
+    Dashboard
+@endsection
+
 @section('htmlheader_title')
-	Change Title here!
+	Dashboard
 @endsection
 
 
@@ -17,7 +22,7 @@
                     <div class="inner">
                         <h3>{{ $array[] = $electricity->sum }} Watts</h3>
 
-                        <p>Consumits este Mes </p>
+                        <p>Consumits aquest Mes </p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-bolt"></i>
@@ -35,7 +40,7 @@
                     <div class="inner">
                         <h3>{{ $euros }} <sup style="font-size: 20px">€</sup></h3>
 
-                        <p>Gastat este Mes </p>
+                        <p>Gastat aquest Mes </p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-money"></i>
@@ -52,7 +57,7 @@
                     <div class="inner">
                         <h3>{{ $yearkwatts }} <sup style="font-size: 20px">Kw</sup></h3>
 
-                        <p>Consumits este Any {{ date("Y") }} </p>
+                        <p>Consumits aquest Any {{ date("Y") }} </p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-balance-scale"></i>
@@ -61,10 +66,26 @@
                 </div>
             </div>
 
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
 
+                <div class="small-box bg-olive-active">
+                    <div class="inner">
+                        <h3>{{ $yeareuros }} <sup style="font-size: 20px">€</sup></h3>
 
+                        <p>Gastats aquest Any {{ date("Y") }} </p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-calculator"></i>
+                    </div>
+                    <a class="small-box-footer"> <i class="fa fa-check"></i></a>
+                </div>
+            </div>
         </div>
         <!-- /.row -->
+
+
 
     </section>
     <!-- /.content -->

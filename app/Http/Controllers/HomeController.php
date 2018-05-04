@@ -33,34 +33,24 @@ class HomeController extends Controller
         $hours = DB::select("SELECT timestampdiff(HOUR, (SELECT SUBDATE(created_at, DAYOFMONTH(created_at) - 1) as hours FROM electricities LIMIT 1), now()) as value");
 
         foreach ($hours as $hour) {
-            $result = $hour->value;
+            $resultat = $hour->value;
         }
 
-        return $result;
+        return round($resultat, 2);
     }
 
     public function wattstoeuros()
     {
         $month = date("m");
-        //$electricities = Electricity::all();
         $electricities = DB::select("select MonthName(created_at) as month, sum(clamp) as sum from electricities where created_at >= makedate(year(curdate()), 1) and created_at < makedate(year(curdate()) + 1, 1) and MONTH(created_at) = '$month' group by MonthName(created_at)");
 
-
-
-        //$electricities = DB::select('select * from electricities');
         //Calcul euros
         foreach ($electricities as $value) {
-            //$wh = $value->sum * $this->hoursmonth() / 1000;
-            //$kwh = $wh / 1000;
             $kw = $value->sum / 1000;
             $resultat = $kw * 0.12159;
         }
-//
-//        print_r($result);
-        //print_r($electricities);
-        //return $this->hoursmonth();
-        return $resultat;
-        //return view('home');
+
+        return round($resultat, 2);
     }
 
     public function totalyearwatts()
@@ -74,7 +64,22 @@ class HomeController extends Controller
 
         }
 
-        return $resultat;
+        return round($resultat, 2);
+    }
+
+    public function totalyeareuros()
+    {
+        $year = date("Y");
+
+        $totaleuros = DB::select("select sum(clamp) as sum from electricities where created_at LIKE '%$year%'");
+
+        foreach ($totaleuros as $totaleuros) {
+            $kw = $totaleuros->sum / 1000;
+            $resultat = $kw * 0.12159;
+
+        }
+
+        return round($resultat, 2);
     }
 
     /**
@@ -87,18 +92,13 @@ class HomeController extends Controller
         $month = date("m");
 
         $euros = $this->wattstoeuros();
+
         $yearkwatts = $this->totalyearwatts();
-        //$electricities = Electricity::all();
+
+        $yeareuros = $this->totalyeareuros();
+
         $electricities = DB::select("select MonthName(created_at) as month, sum(clamp) as sum from electricities where created_at >= makedate(year(curdate()), 1) and created_at < makedate(year(curdate()) + 1, 1) and MONTH(created_at) = '$month' group by MonthName(created_at)");
-        //$electricities = DB::select('select * from electricities');
-//        foreach ($electricities as $key => $value) {
-//            $result[] = $value->month;
-//            $result[] = $value->sum;
-//        }
-//
-//        print_r($result);
-        //print_r($electricities);
-        return view('home',compact(['electricities', 'euros', 'yearkwatts']));
-        //return view('home');
+
+        return view('home',compact(['electricities', 'euros', 'yearkwatts', 'yeareuros']));
     }
 }
