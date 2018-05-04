@@ -10,12 +10,13 @@ class GraphController extends Controller
 {
     public function graphjson()
     {
-        //$electricities = Electricity::select('clamp', 'created_at')->get();
-        $electricities = DB::select("SELECT sum(clamp) as watts, DAY(created_at) as date from electricities GROUP BY date");
+        $translate = trans('message.db_lang');
+
+        $month = date("m");
+        DB::SELECT("set lc_time_names = '$translate'");
+        $electricities = DB::select("SELECT sum(clamp) as watts, DATE_FORMAT(created_at, '%W %d %M') as date from electricities WHERE created_at >= makedate(year(curdate()), 1) and created_at < makedate(year(curdate()) + 1, 1) and MONTH(created_at) = '$month' GROUP BY created_at");
 
 
-        //print json_encode($electricities);
-        //return $electricities;
         return response()->json($electricities);
     }
 }

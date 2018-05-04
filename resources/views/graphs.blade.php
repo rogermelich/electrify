@@ -26,13 +26,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-
-                        {{--<canvas id="myChart" width="400" height="400"></canvas>--}}
-
-                        <div id="chart-container">
-                            <canvas id="Dashboard-Graph"></canvas>
-                        </div>
-
+                        <canvas id="myChart"></canvas>
                     </div>
                 </div>
                 <!-- /.box-body -->

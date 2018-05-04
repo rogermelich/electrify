@@ -20,9 +20,9 @@
                 @foreach ($electricities as $electricity)
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                        <h3>{{ $array[] = $electricity->sum }} Watts</h3>
+                        <h3>{{ $array[] = $electricity->sum / 1000 }} <sup style="font-size: 20px">Kw</sup></h3>
 
-                        <p>Consumits aquest Mes </p>
+                        <p>{{ trans('message.cons_month') }}</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-bolt"></i>
@@ -40,7 +40,7 @@
                     <div class="inner">
                         <h3>{{ $euros }} <sup style="font-size: 20px">€</sup></h3>
 
-                        <p>Gastat aquest Mes </p>
+                        <p>{{ trans('message.spen_month') }} </p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-money"></i>
@@ -57,7 +57,7 @@
                     <div class="inner">
                         <h3>{{ $yearkwatts }} <sup style="font-size: 20px">Kw</sup></h3>
 
-                        <p>Consumits aquest Any {{ date("Y") }} </p>
+                        <p>{{ trans('message.cons_year') }} {{ date("Y") }} </p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-balance-scale"></i>
@@ -74,7 +74,7 @@
                     <div class="inner">
                         <h3>{{ $yeareuros }} <sup style="font-size: 20px">€</sup></h3>
 
-                        <p>Gastats aquest Any {{ date("Y") }} </p>
+                        <p>{{ trans('message.spen_year') }} {{ date("Y") }} </p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-calculator"></i>
@@ -84,8 +84,24 @@
             </div>
         </div>
         <!-- /.row -->
+        <div class="row">
+            <div class="box box-success">
+                <div class="box-header ui-sortable-handle" style="cursor: move;">
+                    <h3 class="box-title">{{ trans('message.spen_month') }}</h3>
 
-
+                    <div class="pull-right box-tools">
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                    class="fa fa-times"></i></button>
+                    </div>
+                    <hr>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <canvas height="100px" id="myChart"></canvas>
+                </div><!-- row -->
+            </div>
+        </div>
 
     </section>
     <!-- /.content -->

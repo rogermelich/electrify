@@ -131,4 +131,9 @@ return [
     'loggedin'                => 'Login correcte!',
     'entering'                => 'Entrant...',
     'registered'              => 'Usuari registrat!',
+    'db_lang'                 => 'ca_ES',
+    'cons_month'              => 'Consumits aquest Mes',
+    'cons_year'               => 'Consumits aquest Any',
+    'spen_month'              => 'Gastat aquest Mes',
+    'spen_year'               => 'Gastat aquest Any',
 ];
