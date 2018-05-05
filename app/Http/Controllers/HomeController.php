@@ -28,16 +28,16 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    public function hoursmonth()
-    {
-        $hours = DB::select("SELECT timestampdiff(HOUR, (SELECT SUBDATE(created_at, DAYOFMONTH(created_at) - 1) as hours FROM electricities LIMIT 1), now()) as value");
-
-        foreach ($hours as $hour) {
-            $resultat = $hour->value;
-        }
-
-        return round($resultat, 2);
-    }
+//    public function hoursmonth()
+//    {
+//        $hours = DB::select("SELECT timestampdiff(HOUR, (SELECT SUBDATE(created_at, DAYOFMONTH(created_at) - 1) as hours FROM electricities LIMIT 1), now()) as value");
+//
+//        foreach ($hours as $hour) {
+//            $resultat = $hour->value;
+//        }
+//
+//        return round($resultat, 2);
+//    }
 
     public function wattstoeuros()
     {
@@ -75,7 +75,7 @@ class HomeController extends Controller
 
         foreach ($totaleuros as $totaleuros) {
             $kw = $totaleuros->sum / 1000;
-            $resultat = $kw * 0.12159;
+            $resultat = $kw * 0.13987;
 
         }
 
