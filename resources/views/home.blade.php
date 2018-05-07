@@ -97,9 +97,8 @@
                     <!-- /.box-tools -->
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body">
-                    <canvas height="100px" id="myChart"></canvas>
-                </div><!-- row -->
+                    <canvas class="container" height="300px" id="chartActualMonth"></canvas>
+                <!-- row -->
             </div>
         </div>
 

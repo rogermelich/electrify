@@ -23,7 +23,7 @@
 
     $(document).ready(function () {
         $.ajax({
-            url: "{{url('graph/all')}}",
+            url: "{{url('graph/actualmonth')}}",
             method: "GET",
             success: function (data) {
                 var Watts = [];
@@ -36,8 +36,8 @@
                     console.log(data[i]);
 
                 }
-                var ctx = document.getElementById('myChart').getContext("2d");
-                var myChart = new Chart(ctx, {
+                var ctx = document.getElementById('chartActualMonth').getContext("2d");
+                var chartActualMonth = new Chart(ctx, {
                     type: 'line',
                     data: {
                         labels: Date,
@@ -91,86 +91,83 @@
             }
         })
     });
-
-    {{--$(document).ready(function () {--}}
-    {{--$.ajax({--}}
-    {{--url: "{{url('graph/all')}}",--}}
-    {{--method: "GET",--}}
-    {{--success: function (data) {--}}
-    {{--var Watts = [];--}}
-    {{--var Date = [];--}}
-    {{--//--}}
-    {{--for (var i in data) {--}}
-
-    {{--Watts.push(data[i].watts);--}}
-    {{--Date.push(data[i].date);--}}
-    {{--console.log(data[i]);--}}
-
-    {{--}--}}
-
-    {{--var chartdata = {--}}
-    {{--labels: Date,--}}
-    {{--datasets: [--}}
-    {{--{--}}
-    {{--label: 'Watts',--}}
-    {{--backgroundColor: 'rgba(255, 99, 132, 0.2)',--}}
-    {{--borderColor: 'rgba(200, 200, 200, 0.75)',--}}
-    {{--hoverBackgroundColor: 'rgba(200, 200, 200, 1)',--}}
-    {{--hoverBorderColor: 'rgba(200, 200, 200, 1)',--}}
-    {{--data: Watts--}}
-    {{--}--}}
-    {{--]--}}
-    {{--};--}}
-
-    {{--// Ons es declara el Chart--}}
-    {{--var ctx = document.getElementById('Dashboard-Graph').getContext('2d');--}}
-
-    {{--var barGraph = new Chart(ctx, {--}}
-    {{--type: 'bar',--}}
-    {{--data: chartdata--}}
-    {{--});--}}
-
-    {{--// onload: function () {--}}
-    {{--//     var ctx = document.getElementById('Dashboard-Graph').getContext('2d');--}}
-    {{--//     window.myLine = new Chart(ctx, config);--}}
-    {{--// };--}}
-    {{--},--}}
-    {{--error: function (data) {--}}
-    {{--console.log(data);--}}
-    {{--}--}}
-    {{--});--}}
-    {{--});--}}
 </script>
 
-{{--<script>--}}
-{{--var ctx = document.getElementById("myChart").getContext('2d');--}}
-{{--var myChart = new Chart(ctx, {--}}
-{{--type: 'bar',--}}
-{{--data: {--}}
-{{--labels: [],--}}
-{{--datasets: [{--}}
-{{--label: '# of Votes',--}}
-{{--data: [],--}}
-{{--backgroundColor: [--}}
-{{--'rgba(255, 99, 132, 0.2)'--}}
-{{--],--}}
-{{--borderColor: [--}}
-{{--'rgba(255,99,132,1)'--}}
-{{--],--}}
-{{--borderWidth: 1--}}
-{{--}]--}}
-{{--},--}}
-{{--options: {--}}
-{{--scales: {--}}
-{{--yAxes: [{--}}
-{{--ticks: {--}}
-{{--beginAtZero: true--}}
-{{--}--}}
-{{--}]--}}
-{{--}--}}
-{{--}--}}
-{{--});--}}
-{{--</script>--}}
+<script>
+
+    $(document).ready(function () {
+        $.ajax({
+            url: "{{url('graph/summonth')}}",
+            method: "GET",
+            success: function (data) {
+                var Watts = [];
+                var Date = [];
+                //
+                for (var i in data) {
+
+                    Watts.push(data[i].watts);
+                    Date.push(data[i].mes_nom);
+                    console.log(data[i]);
+
+                }
+                var ctx = document.getElementById('chartSumMonth').getContext("2d");
+                var chartSumMonth = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: Date,
+                        datasets: [{
+                            backgroundColor: [
+                                "#2ecc71",
+                                "#3498db",
+                                "#95a5a6",
+                                "#9b59b6",
+                                "#f1c40f",
+                                "#e74c3c",
+                                "#34495e",
+                                "#cc0066",
+                                "#000099",
+                                "#663300",
+                                "#ffff00",
+                                "#003300"
+                            ],
+                            data: Watts
+                        }],
+                        options: {
+                            legend: {
+                                position: "top"
+                            },
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        fontColor: "rgba(0,0,0,0.5)",
+                                        fontStyle: "bold",
+                                        beginAtZero: true,
+                                        maxTicksLimit: 5,
+                                        padding: 20
+                                    },
+                                    gridLines: {
+                                        drawTicks: false,
+                                        display: false
+                                    }
+                                }],
+                                xAxes: [{
+                                    gridLines: {
+                                        zeroLineColor: "transparent"
+                                    },
+                                    ticks: {
+                                        padding: 20,
+                                        fontColor: "rgba(0,0,0,0.5)",
+                                        fontStyle: "bold"
+                                    }
+                                }]
+                            }
+                        }
+                    }
+                })
+            }
+        })
+    });
+</script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the
