@@ -3,19 +3,17 @@
 namespace App\Http\Controllers;
 
 
-
 class UserFormRequest
 {
     public function rules()
     {
-        // Grab the user id from the URL
-        $user_id = \Route::current()->getParameter('users');
+        //$user_id = \Route::current()->getParameter('user');
 
         return [
-            'name' => 'required',
-            'email' => 'unique:users,email,'.$user_id.'|email|required',
+            'name'     => 'required|max:255',
+            'email'    => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6|confirmed'
         ];
     }
-
 
 }

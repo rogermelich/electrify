@@ -12,7 +12,14 @@
 @section('main-content')
     <div class="spark-screen">
         <div class="row">
-
+            <div class="col-md-6 col-md-offset-3">
+                @if (session('status'))
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        {{ session('status') }}
+                    </div>
+                @endif
+            </div>
             <div class="col-md-4 col-md-offset-4">
 
                 <div class="box box-danger">
@@ -30,8 +37,9 @@
                             <!-- /.input group -->
                         </div>
                     </div>
-                    <form method="POST" action="">
-                        <!-- /.form group -->
+                    <form method="post" action="{{ url('user/profile/edit') }}">
+                    {{ csrf_field() }}
+                    <!-- /.form group -->
                         <div class="box-body">
                             <div class="form-group">
                                 <!-- /.form group -->
@@ -42,7 +50,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-male"></i>
                                         </div>
-                                        <input class="form-control" type="text" readonly="readonly"
+                                        <input class="form-control" type="text" readonly="readonly" name="id"
                                                value="{{ Auth::user()->id }}">
                                     </div>
                                     <!-- /.input group -->
@@ -55,7 +63,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-user"></i>
                                         </div>
-                                        <input class="form-control" type="text"
+                                        <input class="form-control" type="text" name="name"
                                                value="{{ Auth::user()->name }}">
                                     </div>
                                     <!-- /.input group -->
@@ -68,7 +76,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-at"></i>
                                         </div>
-                                        <input class="form-control" type="text"
+                                        <input class="form-control" type="text" name="email"
                                                value="{{ Auth::user()->email }}">
                                     </div>
                                     <!-- /.input group -->
@@ -95,20 +103,21 @@
                                             <i class="fa fa-calendar-plus-o"></i>
                                         </div>
                                         <input class="form-control" type="text" readonly="readonly"
-                                               value="{{ Auth::user()->created_at }}">
+                                               value="{{ Auth::user()->updated_at }}">
                                     </div>
                                     <!-- /.input group -->
                                 </div>
                                 <!-- /.form group -->
                                 <hr>
+                                <button type="submit" class="btn btn-danger">Actualitzar</button>
 
                             </div>
                             <!-- /.box-body -->
-                            <button type="submit" class="btn btn-danger">Actualitzar</button>
                         </div>
                         <!-- /.box -->
                     </form>
                 </div>
+
             </div>
             <!-- /.col (left) -->
         </div>

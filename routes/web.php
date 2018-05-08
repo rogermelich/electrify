@@ -43,5 +43,6 @@ Route::group(['middleware' => 'auth'], function () {
         'middleware' => 'auth',
         'uses' => 'ProfileController@show'
     ]);
+    Route::post('/user/profile/edit', 'ProfileController@edit');
 
 });

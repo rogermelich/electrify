@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\User as User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -28,14 +28,17 @@ class ProfileController extends Controller
      * @param $id
      * @return $this
      */
-    public function edit($id, UserFormRequest $request)
+    public function edit()
     {
-        $user = User::findOrFail($id);
-        $user->name = $request->get('name');
-        $user->email = $request->get('email');
+        $user = User::find(Auth::user()->id);
+        $data = request()->all();
+
+        $user->id = Auth::user()->id;
+        $user->name = $data['name'];
+        $user->email = $data['email'];
         $user->save();
 
-        return \Redirect::route('users.edit', [$user->id])->with('message', 'User has been updated!');
+        return redirect()->action('ProfileController@show')->with('status', 'Usuari Modificat Correctament!');
     }
 
 }
