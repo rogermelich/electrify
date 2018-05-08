@@ -39,4 +39,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('graph/actualmonth', 'GraphController@graphjsonactualmonth');
     Route::get('graph/summonth', 'GraphController@graphjsonsummonth');
 
+    Route::get('/user/profile', [
+        'middleware' => 'auth',
+        'uses' => 'ProfileController@show'
+    ]);
+
 });

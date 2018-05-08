@@ -110,9 +110,9 @@
                     console.log(data[i]);
 
                 }
-                var ctx = document.getElementById('chartSumMonth').getContext("2d");
+                var ctx = document.getElementById('chartSumMonth').getContext('2d');
                 var chartSumMonth = new Chart(ctx, {
-                    type: 'doughnut',
+                    type: 'polarArea',
                     data: {
                         labels: Date,
                         datasets: [{
