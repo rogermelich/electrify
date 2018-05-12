@@ -222,12 +222,12 @@
                 data: {
                     datasets: [
                         {
-                            label: a1[0][0].any,
+                            label: "KWh "+a1[0][0].any,
                             backgroundColor: "#2ecc71",
                             data: Watts1
                         },
                         {
-                            label: a2[0][0].any,
+                            label: "KWh "+a2[0][0].any,
                             backgroundColor: "#000099",
                             data: Watts2,
                             type: 'bar'
