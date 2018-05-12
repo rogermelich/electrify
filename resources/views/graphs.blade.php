@@ -15,7 +15,7 @@
 
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Total Watts per Mes (Any Actual)</h3>
+                        <h3 class="box-title">Total KWs per Mes (Any Actual)</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -28,13 +28,12 @@
 
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Quick Example</h3>
+                        <h3 class="box-title">Comparativa KWs entre l'any actual i l'anterior</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <div class="box-body">
-                        <canvas id="myChart"></canvas>
-                    </div><!-- row -->
+                        <canvas class="container" id="chartMonthYear"></canvas>
+                    <!-- row -->
                 </div>
                 <!-- /.box-body -->
             </div>

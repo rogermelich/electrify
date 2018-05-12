@@ -38,6 +38,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('graph/actualmonth', 'GraphController@graphjsonactualmonth');
     Route::get('graph/summonth', 'GraphController@graphjsonsummonth');
+    Route::get('graph/summonthyear', 'GraphController@graphjsonsummonthyear');
+
 
     Route::get('/user/profile', [
         'middleware' => 'auth',

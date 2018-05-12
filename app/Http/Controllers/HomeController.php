@@ -99,6 +99,7 @@ class HomeController extends Controller
 
         $electricities = DB::select("select MonthName(created_at) as month, sum(clamp) as sum from electricities where created_at >= makedate(year(curdate()), 1) and created_at < makedate(year(curdate()) + 1, 1) and MONTH(created_at) = '$month' group by MonthName(created_at)");
 
+
         return view('home',compact(['electricities', 'euros', 'yearkwatts', 'yeareuros']));
     }
 }

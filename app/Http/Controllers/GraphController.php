@@ -29,13 +29,19 @@ class GraphController extends Controller
         DB::SELECT("set lc_time_names = '$translate'");
         $electricities = DB::select("SELECT sum(clamp) AS watts, YEAR(created_at) AS any, MONTH(created_at) AS mes, MONTHNAME(created_at) as mes_nom FROM electricities WHERE YEAR(created_at) = $any GROUP BY YEAR(created_at), mes, mes_nom ORDER BY YEAR(created_at), mes ASC");
 
-//        foreach ($electricities as $electricity){
-//            $watts = $electricity->watts / 1000;
-//            $mes = $electricity->mes;
-//            $any = $electricity->any;
-//        }
+        return response()->json($electricities);
+    }
 
+    public function graphjsonsummonthyear()
+    {
+        $translate = trans('message.db_lang');
+
+        $year = date("Y");
+        $any = $year-1;
+        DB::SELECT("set lc_time_names = '$translate'");
+        $electricities = DB::select("SELECT sum(clamp) AS watts, YEAR(created_at) AS any, MONTH(created_at) AS mes, MONTHNAME(created_at) as mes_nom FROM electricities WHERE YEAR(created_at) = $any GROUP BY YEAR(created_at), mes, mes_nom ORDER BY YEAR(created_at), mes ASC");
 
         return response()->json($electricities);
     }
+
 }
