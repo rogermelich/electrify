@@ -19,7 +19,7 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                        <canvas class="container" id="chartSumMonth"></canvas>
+                    <canvas class="container" id="chartSumMonth"></canvas>
                     <!-- row -->
                 </div>
                 <!-- /.box-body -->
@@ -32,8 +32,8 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                        {{--<canvas class="container" id="chartMonthYear"></canvas>--}}
-                    <!-- row -->
+                {{--<canvas class="container" id="chartMonthYear"></canvas>--}}
+                <!-- row -->
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -52,5 +52,8 @@
             </div>
         </div>
     </div>
-    </div>
+@endsection
+
+@section('add-scripts')
+    @include('scripts.graph_scripts')
 @endsection

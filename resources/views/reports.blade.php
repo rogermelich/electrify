@@ -143,3 +143,6 @@
         </div>
     </div>
 @endsection
+@section('add-scripts')
+    @include('scripts.reports_scripts')
+@endsection

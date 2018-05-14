@@ -105,3 +105,6 @@
     </section>
     <!-- /.content -->
 @endsection
+@section('add-scripts')
+    @include('scripts.home_scripts')
+@endsection
