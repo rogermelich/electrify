@@ -49,4 +49,9 @@ Route::group(['middleware' => 'auth'], function () {
     ]);
     Route::post('/user/profile/edit', 'ProfileController@edit');
 
+    Route::prefix('password')->group(function () {
+        Route::get('change', 'ProfileController@password')->name('password.change');
+        Route::patch('change', 'ProfileController@password_update');
+    });
+
 });

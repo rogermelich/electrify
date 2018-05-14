@@ -37,12 +37,13 @@
                             <!-- /.input group -->
                         </div>
                     </div>
-                    <form method="post" action="{{ url('user/profile/edit') }}">
-                    {{ csrf_field() }}
+
                     <!-- /.form group -->
                         <div class="box-body">
                             <div class="form-group">
                                 <!-- /.form group -->
+                                <form method="post" action="{{ url('user/profile/edit') }}">
+                                    {{ csrf_field() }}
                                 <div class="form-group">
                                     <label>Id:</label>
 
@@ -82,6 +83,7 @@
                                     <!-- /.input group -->
                                 </div>
                                 <!-- /.form group -->
+                                <!-- /.form group -->
                                 <div class="form-group">
                                     <label>Creat:</label>
 
@@ -110,12 +112,18 @@
                                 <!-- /.form group -->
                                 <hr>
                                 <button type="submit" class="btn btn-danger">Actualitzar</button>
+                                </form>
+                                <br>
 
+                                <form action="/password/change">
+                                    <button type="submit" class="btn btn-info">Canvi Password</button>
+                                </form>
                             </div>
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box -->
-                    </form>
+
+
                 </div>
 
             </div>

@@ -12,6 +12,6 @@ return [
     |
     */
 
-    'failed' => 'Aquestes credencials no concorden amb els nostres registres.',
-    'throttle' => 'Heu superat el nombre màxim d\'intents d\'accés. Per favor, torna a intentar-ho en :seconds segons.',
+    'failed' => 'Estas credenciales no coinciden con nuestros registros.',
+    'throttle' => 'Demasiados intentos de acceso. Por favor intente nuevamente en :seconds segundos.',
 ];

@@ -6,6 +6,7 @@ use App\User as User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -16,6 +17,7 @@ class ProfileController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -24,12 +26,14 @@ class ProfileController extends Controller
         $id = Auth::user()->id;
         return view('profile.profile')->with('id', $id);
     }
+
     /**
      * @param $id
      * @return $this
      */
     public function edit()
     {
+
         $user = User::find(Auth::user()->id);
         $data = request()->all();
 
@@ -39,6 +43,36 @@ class ProfileController extends Controller
         $user->save();
 
         return redirect()->action('ProfileController@show')->with('status', 'Usuari Modificat Correctament!');
+
+    }
+
+    public function password()
+    {
+        return view('profile.change');
+    }
+
+    public function password_update()
+    {
+        $this->validate(request(), [
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        // All variables
+        $user_password = auth()->user()->password;
+        $old_password = request('old_password');
+        $password = request('password');
+
+        if (\Hash::check($old_password, $user_password)) {
+
+            auth()->user()->update([
+                'password' => $password
+            ]);
+
+            return redirect()->action('ProfileController@password')->with('status', 'Constrasenya modificada correctament!');
+
+        } else {
+            return redirect()->action('ProfileController@password')->with('error', 'Contrasenya actual incorrecta!');
+        }
     }
 
 }
