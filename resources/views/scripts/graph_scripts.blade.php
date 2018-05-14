@@ -130,13 +130,13 @@
                 data: {
                     datasets: [
                         {
-                            label: "KWh "+a1[0][0].any,
-                            backgroundColor: "#2ecc71",
+                            label: "kWh "+a1[0][0].any,
+                            backgroundColor: "#cc0041",
                             data: Watts1
                         },
                         {
-                            label: "KWh "+a2[0][0].any,
-                            backgroundColor: "#000099",
+                            label: "kWh "+a2[0][0].any,
+                            backgroundColor: "#014099",
                             data: Watts2,
                             type: 'bar'
                         }
@@ -152,3 +152,69 @@
         })
     });
 </script>
+
+<script>
+
+    $(document).ready(function () {
+        $.ajax({
+            url: "{{url('graph/sumyears')}}",
+            method: "GET",
+            success: function (data) {
+                var Watts = [];
+                var Date = [];
+                //
+                for (var i in data) {
+                    Watts.push(data[i][0].watts / 1000);
+                    Date.push(data[i][0].any);
+                }
+
+                var ctx = document.getElementById('chartSumYears');
+                var chartSumYears = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: Date,
+                        datasets: [{
+                            label: "kWh",
+                            backgroundColor: [
+                                "#2ecc71",
+                                "#3498db",
+                                "#9b59b6",
+                                "#f1c40f",
+                                "#e74c3c"
+                            ],
+                            data: Watts
+                        }],
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        fontColor: "rgba(0,0,0,0.5)",
+                                        fontStyle: "bold",
+                                        beginAtZero: true,
+                                        maxTicksLimit: 5,
+                                        padding: 20
+                                    },
+                                    gridLines: {
+                                        drawTicks: false,
+                                        display: false
+                                    }
+                                }],
+                                xAxes: [{
+                                    gridLines: {
+                                        zeroLineColor: "transparent"
+                                    },
+                                    ticks: {
+                                        padding: 20,
+                                        fontColor: "rgba(0,0,0,0.5)",
+                                        fontStyle: "bold"
+                                    }
+                                }]
+                            }
+                        }
+                    }
+                })
+            }
+        })
+    });
+</script>
+

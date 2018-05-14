@@ -18,7 +18,7 @@
                     data: {
                         labels: Date,
                         datasets: [{
-                            label: "KWs",
+                            label: "kWs",
                             borderColor: "#80b6f4",
                             pointBorderColor: "#80b6f4",
                             pointBackgroundColor: "#80b6f4",

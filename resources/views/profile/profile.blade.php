@@ -1,11 +1,11 @@
 @extends('adminlte::page')
 
 @section('contentheader_title')
-    Graphs
+
 @endsection
 
 @section('htmlheader_title')
-    Graphs
+
 @endsection
 
 

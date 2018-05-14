@@ -15,7 +15,7 @@
 
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Total KWs per Mes (Any Actual)</h3>
+                        <h3 class="box-title">Total kWs per Mes (Any Actual)</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -28,11 +28,11 @@
 
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Comparativa KWs entre l'any actual i l'anterior</h3>
+                        <h3 class="box-title">Comparativa Consum total entre anys</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                {{--<canvas class="container" id="chartMonthYear"></canvas>--}}
+                <canvas class="container" id="chartSumYears"></canvas>
                 <!-- row -->
                 </div>
                 <!-- /.box-body -->
@@ -41,7 +41,7 @@
 
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Comparativa KWs entre l'any actual i l'anterior</h3>
+                        <h3 class="box-title">Comparativa kWs entre l'any actual i l'anterior</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
