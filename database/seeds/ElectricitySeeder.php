@@ -21,7 +21,6 @@ class ElectricitySeeder extends Seeder
             DB::table('electricities')->insert([
                 'clamp' => $i+10,
                 'created_at' => date('Y-m-d H:m:s'),
-                'updated_at' => date('Y-m-d H:m:s'),
             ]);
         }
     }

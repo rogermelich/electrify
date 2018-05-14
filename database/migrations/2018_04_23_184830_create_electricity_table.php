@@ -16,7 +16,7 @@ class CreateElectricityTable extends Migration
         Schema::create('electricities', function (Blueprint $table) {
             $table->increments('id');
             $table->float('clamp')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 
