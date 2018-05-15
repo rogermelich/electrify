@@ -59,7 +59,7 @@
                                 <label class="col-form-label text-lg-right">Confirmar Contrasenya</label>
                                 <input type="password" class="form-control" name="password_confirmation" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Change password</button>
+                            <button type="submit" class="btn btn-primary">Canvi de Contrasenya</button>
                         </form>
                     </div>
                 </div>

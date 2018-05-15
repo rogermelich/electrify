@@ -54,7 +54,7 @@ class ProfileController extends Controller
     public function password_update()
     {
         $this->validate(request(), [
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|min:6|confirmed',
         ]);
 
         // All variables
@@ -65,7 +65,7 @@ class ProfileController extends Controller
         if (\Hash::check($old_password, $user_password)) {
 
             auth()->user()->update([
-                'password' => $password
+                'password' => bcrypt($password)
             ]);
 
             return redirect()->action('ProfileController@password')->with('status', 'Constrasenya modificada correctament!');

@@ -60,7 +60,7 @@ class GraphController extends Controller
         $actual_year_tres = DB::select("SELECT sum(clamp) AS watts, YEAR(created_at) AS any FROM electricities WHERE YEAR(created_at) = $any_tres GROUP BY YEAR(created_at) ORDER BY YEAR(created_at) ASC");
         $actual_year_quatre = DB::select("SELECT sum(clamp) AS watts, YEAR(created_at) AS any FROM electricities WHERE YEAR(created_at) = $any_quatre GROUP BY YEAR(created_at) ORDER BY YEAR(created_at) ASC");
 
-        return response()->json(array($actual_year, $actual_year_u, $actual_year_dos, $actual_year_tres, $actual_year_quatre));
+        return response()->json(array($actual_year_quatre, $actual_year_tres, $actual_year_dos, $actual_year_u, $actual_year));
     }
 
 }

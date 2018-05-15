@@ -116,7 +116,7 @@
                                 <br>
 
                                 <form action="/password/change">
-                                    <button type="submit" class="btn btn-info">Canvi Password</button>
+                                    <button type="submit" class="btn btn-info">Canvi de Contrasenya</button>
                                 </form>
                             </div>
                             <!-- /.box-body -->
