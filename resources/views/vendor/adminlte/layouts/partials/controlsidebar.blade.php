@@ -4,18 +4,22 @@
     <div class="tab-content">
         <!-- Home tab content -->
         <div class="tab-pane active" id="control-sidebar-home-tab">
-            <h3 class="control-sidebar-heading">Cost del kW</h3>
+            <h3 class="control-sidebar-heading">kW</h3>
             <ul class='control-sidebar-menu'>
                 <li>
                     <a href='javascript::;'>
-                        <div class="form-group">
+                        <form method="post" action="{{ url('/pricekw/edit') }}">
+                            {{ csrf_field() }}
+                            <div class="form-group">
 
-                            <h4 class="control-sidebar-subheading">
-                                Preu kWs
-                            </h4>
-                            <input type="number" class="form-control" name="price_kws" value="{{$price_kw}}" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Canvi Preu</button>
+                                <h4 class="control-sidebar-subheading">
+                                    Preu kW
+                                </h4>
+                                <input type="number" class="form-control" name="price_kws" value="{{$price_kw}}"
+                                       required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Canvi Preu</button>
+                        </form>
                     </a>
                 </li>
             </ul><!-- /.control-sidebar-menu -->

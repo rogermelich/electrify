@@ -48,7 +48,7 @@ class HomeController extends Controller
         //Calcul euros
         foreach ($electricities as $value) {
             $kw = $value->sum / 1000;
-            $resultat = $kw * 0.12159;
+            $resultat = $kw * PricekWController::price_kw();
         }
 
         return round($resultat, 2);
@@ -76,7 +76,7 @@ class HomeController extends Controller
 
         foreach ($totaleuros as $totaleuros) {
             $kw = $totaleuros->sum / 1000;
-            $resultat = $kw * 0.13987;
+            $resultat = $kw * PricekWController::price_kw();
 
         }
 
