@@ -26,6 +26,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        PricekWController::class;
     }
 
 //    public function hoursmonth()
@@ -98,7 +99,6 @@ class HomeController extends Controller
         $yeareuros = $this->totalyeareuros();
 
         $electricities = DB::select("select MonthName(created_at) as month, sum(clamp) as sum from electricities where created_at >= makedate(year(curdate()), 1) and created_at < makedate(year(curdate()) + 1, 1) and MONTH(created_at) = '$month' group by MonthName(created_at)");
-
 
         return view('home',compact(['electricities', 'euros', 'yearkwatts', 'yeareuros']));
     }

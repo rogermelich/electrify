@@ -57,7 +57,6 @@ class ProfileController extends Controller
             'password' => 'required|min:6|confirmed',
         ]);
 
-        // All variables
         $user_password = auth()->user()->password;
         $old_password = request('old_password');
         $password = request('password');
