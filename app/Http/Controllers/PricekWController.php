@@ -33,16 +33,5 @@ class PricekWController extends Controller
 
         return redirect()->back()->with('status', 'Preu Modificat Correctament!');
 
-//        if (\Hash::check($old_password, $user_password)) {
-//
-//            auth()->user()->update([
-//                'password' => bcrypt($password)
-//            ]);
-//
-//            return redirect()->back()->with('status', 'Preu Modificat Correctament!');
-//
-//        } else {
-//            return redirect()->back()->with('status', "Preu no s'ha modificat correctament!");
-//        }
     }
 }

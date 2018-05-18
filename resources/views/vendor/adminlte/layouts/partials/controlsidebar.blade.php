@@ -15,7 +15,7 @@
                                 <h4 class="control-sidebar-subheading">
                                     Preu kW
                                 </h4>
-                                <input type="number" class="form-control" name="price_kws" value="{{$price_kw}}"
+                                <input type="number" step='0.00001' class="form-control" name="price_kws" value="{{$price_kw}}"
                                        required>
                             </div>
                             <button type="submit" class="btn btn-primary">Canvi Preu</button>

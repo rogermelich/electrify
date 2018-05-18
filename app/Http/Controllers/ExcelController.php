@@ -21,7 +21,7 @@ class ExcelController extends Controller
 //
 //            });
 //        })->export('xls');
-
+// SELECT max(clamp) AS watts, MONTH(created_at) AS mes, MONTHNAME(created_at) as mes_nom, DAY(created_at) AS dia, DAYNAME(created_at) as dia_nom FROM electricities WHERE (created_at >= '2018-04-23 19:04:54' AND created_at < '2018-04-23 23:59:59' ) GROUP BY mes, mes_nom ORDER BY mes ASC
 
     }
 
@@ -99,9 +99,9 @@ class ExcelController extends Controller
         }
 
         //Afaga les dades de $result imprimeix el Excel
-        Excel::create('Consum Mínim Mitjà Dates', function($excel) use ($result) {
+        Excel::create('Consum Mitjà Dates', function($excel) use ($result) {
 
-            $excel->sheet('Consum Mínim Mitjà Dates', function($sheet) use ($result){
+            $excel->sheet('Consum Mitjà Dates', function($sheet) use ($result){
 
                 $sheet->fromArray($result);
 

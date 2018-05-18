@@ -13,12 +13,6 @@
     <div class="spark-screen">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                @if (session('status'))
-                    <div class="alert alert-success alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        {{ session('status') }}
-                    </div>
-                @endif
             </div>
             <div class="col-md-4 col-md-offset-4">
 
