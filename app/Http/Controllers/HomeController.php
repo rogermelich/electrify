@@ -8,7 +8,6 @@
 namespace App\Http\Controllers;
 
 use App\Electricity;
-use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -29,17 +28,9 @@ class HomeController extends Controller
         PricekWController::class;
     }
 
-//    public function hoursmonth()
-//    {
-//        $hours = DB::select("SELECT timestampdiff(HOUR, (SELECT SUBDATE(created_at, DAYOFMONTH(created_at) - 1) as hours FROM electricities LIMIT 1), now()) as value");
-//
-//        foreach ($hours as $hour) {
-//            $resultat = $hour->value;
-//        }
-//
-//        return round($resultat, 2);
-//    }
-
+    /**
+     * @return float
+     */
     public function wattstoeuros()
     {
         $month = date("m");
@@ -54,6 +45,9 @@ class HomeController extends Controller
         return round($resultat, 2);
     }
 
+    /**
+     * @return float
+     */
     public function totalyearwatts()
     {
         $year = date("Y");
@@ -68,6 +62,9 @@ class HomeController extends Controller
         return round($resultat, 2);
     }
 
+    /**
+     * @return float
+     */
     public function totalyeareuros()
     {
         $year = date("Y");

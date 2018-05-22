@@ -32,15 +32,19 @@ Route::group(['middleware' => 'auth'], function () {
         return view('reports', $data);
     })->name('reports');
 
-    Route::post('export/maxdaterange', 'ExcelController@maxdaterange');
-    Route::post('export/mindaterange', 'ExcelController@mindaterange');
-    Route::post('export/avgdaterange', 'ExcelController@avgdaterange');
+    Route::prefix('export')->group(function () {
+        Route::post('maxdaterange', 'ExcelController@maxdaterange');
+        Route::post('mindaterange', 'ExcelController@mindaterange');
+        Route::post('avgdaterange', 'ExcelController@avgdaterange');
+        Route::post('totaldaydaterange', 'ExcelController@totaldaydaterange');
+    });
 
-    Route::get('graph/actualmonth', 'GraphController@graphjsonactualmonth');
-    Route::get('graph/summonth', 'GraphController@graphjsonsummonth');
-    Route::get('graph/summonthyear', 'GraphController@graphjsonsummonthyear');
-    Route::get('graph/sumyears', 'GraphController@graphjsonsumyears');
-
+    Route::prefix('graph')->group(function () {
+        Route::get('actualmonth', 'GraphController@graphjsonactualmonth');
+        Route::get('summonth', 'GraphController@graphjsonsummonth');
+        Route::get('summonthyear', 'GraphController@graphjsonsummonthyear');
+        Route::get('sumyears', 'GraphController@graphjsonsumyears');
+    });
 
 
     Route::get('/user/profile', [

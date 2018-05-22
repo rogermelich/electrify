@@ -8,12 +8,12 @@
 @section('main-content')
     <div class="content">
         <div class="row">
-            <div class="box box-success collapsed-box">
+            <div class="box box-primary collapsed-box">
                 <div class="box-header ui-sortable-handle" style="cursor: move;">
                     <h3 class="box-title">Informes Consum Màxim, Mínim i Mitjà</h3>
 
                     <div class="pull-right box-tools">
-                        <button type="button" class="btn btn-success btn-sm" data-widget="collapse"><i
+                        <button type="button" class="btn btn-primary btn-sm" data-widget="collapse"><i
                                     class="fa fa-plus"></i></button>
                     </div>
                     <!-- /.box-tools -->
@@ -62,7 +62,7 @@
                     {{--Consum Mínim--}}
                     <div class="col-md-4">
 
-                        <div class="box box-success box-solid">
+                        <div class="box box-danger box-solid">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Informe Consum Mínim Entre Dates</h3>
                                 <div class="box-tools pull-right">
@@ -90,7 +90,7 @@
                                             <input class="form-control" name="datafi" type="date"/>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-success">Generar Informe</button>
+                                    <button type="submit" class="btn btn-danger">Generar Informe</button>
                                 </form>
 
                                 <!-- Date and time range -->
@@ -101,10 +101,9 @@
                     {{--Consum Mitjà--}}
                     <div class="col-md-4">
 
-                        <div class="box box-success box-solid">
+                        <div class="box box-warning box-solid">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Informe Consum Mitjà Entre Dates !!! Falta Solucionar problemes
-                                    !!!</h3>
+                                <h3 class="box-title">Informe Consum Mitjà Entre Dates</h3>
                                 <div class="box-tools pull-right">
                                     <button type="button" class="btn btn-box-tool" data-widget="remove"><i
                                                 class="fa fa-times"></i></button>
@@ -130,7 +129,7 @@
                                             <input class="form-control" name="datafi" type="date"/>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-success">Generar Informe</button>
+                                    <button type="submit" class="btn btn-warning">Generar Informe</button>
                                 </form>
 
                                 <!-- Date and time range -->
@@ -139,6 +138,45 @@
                         </div>
                     </div>
                 </div><!-- row -->
+            </div>
+            <br>
+            <div class="col-md-5 col-md-offset-3">
+
+                <div class="box box-info box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Informe Consum (Per dies) Entre Dates</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                        class="fa fa-times"></i></button>
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                        class="fa fa-minus"></i></button>
+                        </div>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+
+                        <form action="{{ url('export/totaldaydaterange') }}" method="post">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+
+
+                                <div class="input-group">
+                                    <label>Data Inici</label>
+                                    <input class="form-control" name="datainici" type="date"/>
+                                </div>
+                                <div class="input-group">
+                                    <label>Data Fi</label>
+                                    <input class="form-control" name="datafi" type="date"/>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-info">Generar Informe</button>
+                        </form>
+
+                        <!-- Date and time range -->
+                    </div>
+                    <!-- /.box-body -->
+                </div>
             </div>
         </div>
     </div>

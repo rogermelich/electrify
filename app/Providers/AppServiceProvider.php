@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PricekWController;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;

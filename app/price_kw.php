@@ -9,6 +9,6 @@ class price_kw extends Model
     protected $table = 'price_kw';
 
     protected $fillable = [
-        'price_kw'
+        'price_kw',
     ];
 }

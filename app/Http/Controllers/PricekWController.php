@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\price_kw;
-use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class PricekWController extends Controller
@@ -28,8 +27,7 @@ class PricekWController extends Controller
 
         DB::table('price_kw')
             ->where('id', 1)
-            ->update(['price_kw' => $data['price_kws']]);
-
+            ->update(['price_kw' => $data['price_kws'], 'updated_at' => Carbon::now('Europe/Madrid')]);
 
         return redirect()->back()->with('status', 'Preu Modificat Correctament!');
 

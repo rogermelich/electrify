@@ -22,13 +22,6 @@
                         <form action="{{ route('password.change') }}" method="post">
                             {{ csrf_field() }}
                             {{ method_field("PATCH") }}
-                            @if (session('status'))
-                                <div class="alert alert-success alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
-                                    </button>
-                                    {{ session('status') }}
-                                </div>
-                            @endif
 
                             @if (session('error'))
                                 <div class="alert alert-error alert-dismissible">
